@@ -313,9 +313,48 @@ Mma.Decode.Any = function (bits, offset, maxParts) {
             state = READY;
             break;
 
-        // Ignore real matrices for now.
+        // Real matrices have an n number (the number of dimensions), n sizes
+        // and size1*size2*... elements.
+        // The highest-numbered size is for the innermost lists.
         case REAL_MATRIX:
-            offset += 1;
+            var n = Mma.Decode.Int32(bits, offset);
+            offset += 4;
+            var sizes = [];
+            for (var s = 0; s < n; s++) {
+                sizes[s] = Mma.Decode.Int32(bits, offset);
+                offset += 4;
+            }
+            // We'll use a recursive function for this one.
+            // Start at the highest level (n-1) and go down to 0.
+            var ParseMatrixAtLevel = function (bits, offset, sizes, level) {
+                var list = [];
+                var originalOffset = offset;
+
+                if (level === 0) {
+                    for (var i = 0; i < sizes[sizes.length - 1]; i++) {
+                        var float = Mma.Decode.Float64(bits, offset);
+                        list.push(new Mma.RealMP(float));
+                        offset += 8;
+                    }
+                } else {
+                    for (var i = 0; i < sizes[sizes.length - level - 1]; i++) {
+                        var p = ParseMatrixAtLevel(bits, offset, sizes,
+                            level - 1);
+                        offset += p.bytesRead;
+                        list.push(p.expr);
+                    }
+                }
+
+                return {
+                    expr: new Mma.Expression(
+                        new Mma.Symbol("List"),
+                        list),
+                    bytesRead: offset - originalOffset,
+                };
+            }
+            var parsedMatrix = ParseMatrixAtLevel(bits, offset, sizes, n-1);
+            offset += parsedMatrix.bytesRead;
+            parts.push(parsedMatrix.expr);
             state = READY;
             break;
         }

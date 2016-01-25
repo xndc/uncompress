@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Uncompress[]</title>
     <script src="pako_inflate.min.js"></script>
     <script src="mma.js"></script>
     <script src="index.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"/>
     <style>
         #container {
             margin: auto;
-            max-width: 800px;
-            padding: 1em;
+            max-width: 700px;
+            padding-left: 1em;
+            padding-right: 1em;
         }
         .hidden {
             display: none;
@@ -20,6 +23,13 @@
             font-family: monospace;
             font-weight: normal;
         }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #ADD8E6;
+        }
         textarea {
             width: 100%;
             font-family: monospace;
@@ -28,7 +38,7 @@
 </head>
 <body>
     <div id="container">
-        <h1>Uncompress[]</h1>
+        <h1><a href="https://github.com/wickeda/uncompress">Uncompress[]</a></h1>
         <textarea id="input" rows=15 autofocus></textarea>
         <pre id="output"></pre>
     </div>

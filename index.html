@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uncompress[]</title>
+    <script src="pako_inflate.min.js"></script>
+    <script src="mma.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"/>
+    <style>
+        #container {
+            margin: auto;
+            max-width: 800px;
+            padding: 1em;
+        }
+        .hidden {
+            display: none;
+        }
+        h1 {
+            text-align: center;
+            font-family: monospace;
+            font-weight: normal;
+        }
+        textarea {
+            width: 100%;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Uncompress[]</h1>
+        <textarea id="input" rows=15 autofocus></textarea>
+        <pre id="output"></pre>
+    </div>
+</body>
+</html>

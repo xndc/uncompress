@@ -140,12 +140,12 @@ Mma.Expression = function (head, parts) {
 
 // Get the little-endian 32-bit integer value at offset.
 Mma.Decode.Int32 = function (bits, offset) {
-    if (offset === undefined)
-        offset = 0;
-    return bits[offset] + 
-        bits[offset+1] * 256 +
-        bits[offset+2] * 65536 +
-        bits[offset+3] * 16777216;
+    try {
+        var dataview = new DataView(bits.buffer);
+        return dataview.getInt32(offset, true);
+    } catch (e) {
+        return 0;
+    }
 }
 
 // Get the little-endian IEEE 754 binary64 float at the offset.

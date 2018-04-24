@@ -1,4 +1,4 @@
-# [Uncompress](http://wickeda.github.io/uncompress/)
+# [Uncompress](http://xndc.github.io/uncompress/)
 
 This is a JavaScript implementation of [Mathematica](http://www.wolfram.com/mathematica/)'s [`Uncompress[]`](https://reference.wolfram.com/language/ref/Uncompress.html) function.
 

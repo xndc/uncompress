@@ -1,0 +1,34 @@
+{
+  "name": "mma-uncompress",
+  "version": "1.0.0",
+  "description": "This is a JavaScript implementation of Mathematica Uncompress function",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xndc/uncompress.git"
+  },
+  "keywords": [
+    "mathematica",
+    "wolfram"
+  ],
+  "dependencies": {
+    "pako": "^2.1.0",
+    "parcel-bundler": "1.12.5"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
+  },
+  "author": "Andy C.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xndc/uncompress/issues"
+  },
+  "homepage": "https://github.com/xndc/uncompress#readme"
+}

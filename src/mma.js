@@ -2,7 +2,9 @@
 // Mathematica's core data types, a decoder for the internal "!boR" format
 // and an implementation of Mathematica's Decompress[] function.
 
-var Mma = Mma || {};
+const pako = require('pako');
+
+export let Mma = {};
 Mma.Util = {};
 Mma.Decode = {};
 
@@ -395,3 +397,4 @@ Mma.Decompress = function (compressedString) {
 Mma.DecompressDecode = function (compressedString) {
     return Mma.Decode.Any(Mma.Decompress(compressedString));
 }
+

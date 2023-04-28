@@ -1,3 +1,4 @@
+import { Mma } from "./src/mma";
 var input, output, decoded;
 
 window.addEventListener("load", function() {

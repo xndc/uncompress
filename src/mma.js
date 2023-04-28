@@ -398,3 +398,30 @@ Mma.DecompressDecode = function (compressedString) {
     return Mma.Decode.Any(Mma.Decompress(compressedString));
 }
 
+Mma.toArray = function (obj) {
+    
+    var text = [];
+    function print (str) {
+        text.push(str);
+    }
+
+    if (obj instanceof Mma.IntegerMP || obj instanceof Mma.RealMP) {
+        return(obj.n);
+    } else if (obj instanceof Mma.IntegerAP || obj instanceof Mma.RealAP) {
+        return(obj.nstring);
+    } else if (obj instanceof Mma.Symbol) {
+        return(obj.name);
+    } else if (obj instanceof Mma.String) {
+        return("'" + obj.str + "'");
+    } else if (obj instanceof Mma.Expression) {
+        print(obj.head.name);
+        for (var i=0; i < obj.parts.length; i++) {
+            text.push(Mma.toArray(obj.parts[i]));
+        }
+   
+    } else {
+     
+    }
+    return text;
+}
+

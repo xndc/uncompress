@@ -1,10 +1,11 @@
 {
   "name": "mma-uncompress",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a JavaScript implementation of Mathematica Uncompress function",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
+    "benchmark": "parcel benchmark.html --open",
     "build": "parcel build index.html"
   },
   "repository": {
@@ -16,6 +17,8 @@
     "wolfram"
   ],
   "dependencies": {
+    "benchmark": "^2.1.4",
+    "fastbench": "^1.0.1",
     "pako": "^2.1.0",
     "parcel-bundler": "1.12.5"
   },

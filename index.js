@@ -1,3 +1,4 @@
+import { Mma } from "./src/mma";
 var input, output, decoded;
 
 window.addEventListener("load", function() {
@@ -6,6 +7,7 @@ window.addEventListener("load", function() {
 
     input.addEventListener("input", function() {
         decoded = Mma.DecompressDecode(input.value);
+        console.log(Mma.toArray(decoded.parts[0]));
         output.textContent = PrettyPrint(decoded.parts[0]);
     })
 });
@@ -50,3 +52,4 @@ function PrettyPrint (obj, indent) {
     }
     return text;
 }
+
